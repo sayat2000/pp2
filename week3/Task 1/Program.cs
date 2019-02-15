@@ -14,7 +14,7 @@ namespace Task_1
         public int s;
         DirectoryInfo dir;
         FileSystemInfo cur;
-        bool close;
+        readonly bool close;
 
         public Manager()
         {
@@ -28,7 +28,7 @@ namespace Task_1
             dir = new DirectoryInfo(path);
             s = dir.GetFileSystemInfos().Length;
             close = true;
-        }
+        }                                                   // Для показа информации о папке
 
         public void Color(FileSystemInfo infos, int index2)
         {
@@ -48,7 +48,7 @@ namespace Task_1
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
             }
-        }
+        }                                                     // для разметки разны цветом всех компонентов
 
         public void Desktop()
         {
@@ -66,7 +66,7 @@ namespace Task_1
                 Console.WriteLine(infos[i].Name);
                 k++;
             }
-            string str = "Previous folder: Backspace | Delete: Del | Rename: F2 | Enter or open: Enter";
+            string str = "Previous folder: Backspace | Delete: Del | Rename: F2 | Enter or open: Enter";  // информационный подвал приложения
             foreach(char c in str)
             {
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -88,7 +88,7 @@ namespace Task_1
 
         }
 
-        public void Up()
+        public void Up()                // функция для перемещения вверх
         {
             index--;
             if(index < 0)
@@ -97,7 +97,7 @@ namespace Task_1
             }
         }
 
-        public void Down()
+        public void Down()              // функция для перемещения вниз
         {
             index++;
             if(index == s)
@@ -106,7 +106,7 @@ namespace Task_1
             }
         }
 
-        public void Enter()
+        public void Enter()             // функция для клавиши "Ввод" и направления внутри папок
         {
             if(cur.GetType() == typeof(DirectoryInfo))
             {
@@ -138,7 +138,7 @@ namespace Task_1
             }
         }
 
-        public void F2()
+        public void F2()                    // функция для клавиши "F2" и для переименования файлов
         {
             Console.Clear();
             Console.WriteLine("Enter new name:");
